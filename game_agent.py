@@ -428,9 +428,10 @@ class AlphaBetaPlayer(IsolationPlayer):
 
         if self.time_left() < self.TIMER_THRESHOLD:
             raise SearchTimeout()
-        
 
         # TODO: finish this function!
+        # The best action if nothing works
+        best_action = (-1, -1)
         # If we are at the limit of depth return score
         if depth == 0:
             return self.score(game, game.active_player)
@@ -438,7 +439,7 @@ class AlphaBetaPlayer(IsolationPlayer):
         legal_moves = game.get_legal_moves()
         # If there is no legal moves reutrn defaul move (-1, -1)
         if not legal_moves:
-            return (-1, -1)
+            return best_action
         # Run through legal moves
         for action in legal_moves:
             # No need to have max here as in alphabeta_max function we are only interested in values!
